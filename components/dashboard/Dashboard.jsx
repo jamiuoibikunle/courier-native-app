@@ -5,12 +5,18 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from 'react-native';
 import React from 'react';
 import {Link} from 'react-router-native';
 import FocusedStatusBar from '../FocusedStatusBar';
 import colors from '../../assets/colours/Colors';
 import {Headline, TextInput} from 'react-native-paper';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const dummy = [
   {
@@ -76,7 +82,9 @@ const Dashboard = () => {
             Hi, Convyy!
           </Text>
         </View>
-        <View style={styles.avatar} />
+        <View style={styles.avatar}>
+          <Fontisto name="person" size={40} />
+        </View>
       </View>
       <View style={styles.top}>
         <Headline style={{color: 'white', width: '100%', fontSize: 20}}>
@@ -94,15 +102,37 @@ const Dashboard = () => {
         <TextInput
           style={styles.input}
           placeholder="Enter your receipt number"
-          left={<TextInput.Icon name="search-web" />}
+          left={<TextInput.Icon icon="search1" color={colors.blue} />}
         />
       </View>
       <View style={styles.middle}>
         <View style={styles.middleitem}>
-          <Text style={{fontSize: 18}}>Single shipping</Text>
+          <View style={styles.iconbg}>
+            <FontAwesome5
+              name="shipping-fast"
+              style={{
+                fontSize: 30,
+                color: colors.blue,
+              }}
+            />
+          </View>
+          <Text style={{fontSize: 20, fontWeight: '500', marginTop: 10}}>
+            Single shipping
+          </Text>
         </View>
         <View style={styles.middleitem}>
-          <Text style={{fontSize: 18}}>Bulk shipping</Text>
+          <View style={styles.iconbg}>
+            <FontAwesome5
+              name="mail-bulk"
+              style={{
+                fontSize: 30,
+                color: colors.blue,
+              }}
+            />
+          </View>
+          <Text style={{fontSize: 20, fontWeight: '500', marginTop: 10}}>
+            Bulk shipping
+          </Text>
         </View>
       </View>
       <Headline>Tracking history</Headline>
@@ -118,16 +148,30 @@ const Dashboard = () => {
                 <Text style={{color: colors.neutral}}>{status}</Text>
               </View>
               <TouchableOpacity>
-                <Text>Go</Text>
+                <Ionicons name="chevron-forward" style={{fontSize: 20}} />
               </TouchableOpacity>
             </View>
           ))}
         </View>
       </ScrollView>
       <View style={styles.navigation}>
-        <Text>Home</Text>
-        <Text>Send</Text>
-        <Text>Settings</Text>
+        <Entypo name="home" color={colors.blue} style={{fontSize: 20}} />
+        <FontAwesome
+          name="send"
+          style={{
+            backgroundColor: 'black',
+            color: 'white',
+            fontSize: 20,
+            padding: 15,
+            borderRadius: 30,
+            marginHorizontal: 50,
+          }}
+        />
+        <Ionicons
+          name="settings"
+          color={colors.neutral}
+          style={{fontSize: 20}}
+        />
       </View>
     </SafeAreaView>
   );
@@ -149,10 +193,12 @@ const styles = StyleSheet.create({
   },
 
   avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 30,
-    backgroundColor: colors.blue,
+    width: 50,
+    height: 50,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
   },
 
   top: {
@@ -212,6 +258,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  iconbg: {
+    backgroundColor: 'white',
+    width: 45,
+    height: 45,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
   },
 });
 
